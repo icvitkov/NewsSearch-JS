@@ -13,24 +13,34 @@
         <input type="text" id="input" placeholder="Search">
         <button id="button"><i class="fas fa-search"></i></button>
     </div>
+    <h1 id="results"></h1>
     <div class="wrapper">
-        <div class="left"><i class="fas fa-angle-left"></i></div>
-        <div class="main">
-            <img src="" alt="" id="urlToImage">
-            <div class="text">
-                <h1 id="title">
-                 
-                </h1>
-                <p id="author"></p>
-                <h3 id="description">
-                
-                </h3>
-                <div id="content">
-    
+        <div class="container" id="container">
+            <div class="left" ><i class="fas fa-angle-left" id="left"></i></div>
+            <div class="main">
+                <img src="" alt="" id="urlToImage" class="image">
+                <div class="text">
+                    <h1 id="title">
+                     
+                    </h1>
+                    <p id="author"></p>
+                    <h3 id="description">
+                    
+                    </h3>
+                    <div id="content">
+        
+                    </div>
+                    <p class="link__container">
+                        <a href="" id="link" target="_blank">Read the full article</a>
+                    </p>
+                </div>
+                <div class="mobile">
+                    <div class="prev" id="leftMobile">Previous</div>
+                    <div class="next" id="rightMobile">Next</div>
                 </div>
             </div>
+            <div class="right"><i class="fas fa-angle-right"  id="right"></i></div>
         </div>
-        <div class="right"><i class="fas fa-angle-right"></i></div>
     </div>
     <script src="src/index.js"></script>
 </body>

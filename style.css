@@ -8,20 +8,26 @@ html, body{
 }
 
 .wrapper{
-    width: 70%;
-    margin: 5% 15%;
+    display: grid;
+    align-items: start;
+    height: 100%;
+    margin: 5% 15% 0 15%;
+    height: 100%;
+}
+
+.container{
     display: grid;
     grid-template-columns: 5% 90% 5%;
-    padding: 20px 0;
     align-items: center;
+    justify-content: center;
 }
 
 .main{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    color: #2c2c2c;
+    color: #5f5f5f;
     align-items: center;
-    background: rgba(197, 197, 197, 0.705);
+    background: #eeeeeeab;
 }
 
 .text{
@@ -31,11 +37,14 @@ html, body{
 
 .fa-angle-left, .fa-angle-right{
     font-size: 50px;
-    color: #747171b7;
+    color: #5f5f5f;
     margin: 5px;
 }
 .right{
     justify-self: end;
+}
+.right, .left{
+    cursor: pointer;
 }
 .fa-angle-left:hover, .fa-angle-right:hover{
     color: #747171;
@@ -46,35 +55,107 @@ html, body{
     display: grid;
     grid-template-columns: 95% 5%;
     margin: 5% 20%;
-    border-bottom: 2px solid #747171b7;
+    border-bottom: 2px solid #5f5f5f;
 }
 
 #input{
     border: none;
     font-size: 25px;
-    color: #747171b7;
+    color: #5f5f5f;
 }
 
-input:focus{
+input:focus, #button:focus{
     outline: none;
 }
 ::placeholder{
-    color: rgba(197, 197, 197, 0.705);
+    color: #9c9c9cf5;
     font-style: italic;
 }
 
 #button{
     border: none;
-    color: #747171b7;
+    color: #5f5f5f;
     font-size: 25px;
     background: transparent;
 }
 
 #urlToImage{
-    width: 100%;
-    height: 100%;
+position: relative;
+width: 100%;
 }
 
 #author{
     font-style: italic;
+}
+
+#results{
+    margin: 5% 20%;
+    text-align: center;
+    color: #5f5f5f;
+}
+
+#link{
+    text-decoration: underline;
+    color: inherit;
+}
+#link:hover{
+    text-decoration: none;
+}
+.link__container{
+    text-align: right;
+}
+
+.hidden{
+    display: none;
+}
+
+.mobile{
+    grid-template-columns: 1fr 1fr;
+    display: none;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.next{
+    text-align: right;
+}
+
+
+
+/* media */
+@media only screen and (max-width: 1500px) {
+    .main{
+        grid-template-columns: repeat(1, auto);
+    }
+}
+@media only screen and (max-width: 800px) {
+    .wrapper{
+        margin: 0;
+    }
+    .main{
+        grid-template-columns: repeat(1, auto);
+        background: initial;
+    }
+.container{
+    grid-template-columns: unset;
+    margin: 0;
+    width: unset;
+}
+/* .fa-angle-left, .fa-angle-right{
+    font-size: 40px;
+} */
+.right, .left{
+    display: none;
+}
+
+.mobile{
+    display: grid;
+    cursor: pointer;
+}
+
+.search{
+    margin: 5%;
+    grid-template-columns: 90% 5%;
+}
+
 }
