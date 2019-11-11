@@ -1,6 +1,6 @@
-(function () {
-  let input = document.getElementById("input"),
-    button = document.getElementById("button"),
+(function() {
+  var input = $("#input"),
+    button = $("#button"),
     search = "",
     image = $("#urlToImage"),
     title = $("#title"),
@@ -13,12 +13,12 @@
     number = 0,
     news = [];
 
-  button.addEventListener("click", function () {
-    search = input.value;
+  button.click(function() {
+    search = input.val();
     newsAPI();
   });
 
-  input.addEventListener("keyup", function (e) {
+  input.keyup(function(e) {
     if (e.keyCode === 13) {
       e.preventDefault();
       button.click();
@@ -30,12 +30,12 @@
     if (search) {
       response = await fetch(
         "https://newsapi.org/v2/everything?language=en&q=" +
-        search +
-        "&apiKey=6cf8ac8dfd324e3ba413c179ad75ea8f"
+          search +
+          "&apiKey=6cf8ac8dfd324e3ba413c179ad75ea8f"
       );
     } else {
       response = await fetch(
-        "https://newsapi.org/v2/top-headlines?country=gb&apiKey=6cf8ac8dfd324e3ba413c179ad75ea8f"
+        "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=6cf8ac8dfd324e3ba413c179ad75ea8f"
       );
     }
 
@@ -51,9 +51,17 @@
       }
       title.html(news.articles[number].title);
       author.html(news.articles[number].author);
-      description.html(news.articles[number].description);
-      content.html(news.articles[number].content);
-      link.prop('href', news.articles[number].url);
+      function limitString(string, number) {
+        return (
+          string
+            .split(" ")
+            .splice(0, number)
+            .join(" ") + "..."
+        );
+      }
+      description.html(limitString(news.articles[number].description, 19));
+      content.html(limitString(news.articles[number].content, 30));
+      link.prop("href", news.articles[number].url);
     } else {
       container.addClass("hidden");
       results.removeClass("hidden");
@@ -62,7 +70,7 @@
   }
 
   function prev(element) {
-    document.getElementById(element).addEventListener("click", function () {
+    $(element).click(function() {
       let length = news.articles.length;
       if (length >= 5) {
         length = 5;
@@ -77,7 +85,7 @@
   }
 
   function next(element) {
-    document.getElementById(element).addEventListener("click", function () {
+    $(element).click(function() {
       let length = news.articles.length;
       if (length >= 5) {
         length = 5;
@@ -91,9 +99,9 @@
     });
   }
 
-  prev("left");
-  prev("leftMobile");
-  next("right");
-  next("rightMobile");
+  prev("#left");
+  prev("#leftMobile");
+  next("#right");
+  next("#rightMobile");
   newsAPI();
 })();
